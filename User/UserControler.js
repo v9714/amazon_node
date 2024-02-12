@@ -59,10 +59,10 @@ class UserControler {
             const expirationTime = new Date(Date.now() + oneHour); // Calculate the expiration time
 
             // res.cookie('user', token, { expires: expirationTime });
-            res.cookie('user', token, {
+           res.cookie('user', token, {
                 expires: expirationTime,
                 secure: true,
-                httpOnly:false,
+                httpOnly:true,
             });
             if (token) {
                 return res.status(200).send({ message: "Success", token: token })

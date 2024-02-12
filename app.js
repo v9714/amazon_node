@@ -18,8 +18,8 @@ app.use(cors({
     origin: process.env.origin,
     // credentials: process.env.credentials,
     // withCredentials: true,
-      credentials: true,
-    withCredentials: false,
+      credentials: false,
+    withCredentials: true,
 }));
 app.use(cookieParser());
 

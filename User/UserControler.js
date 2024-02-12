@@ -58,7 +58,13 @@ class UserControler {
             const oneHour = 60 * 60 * 1000; // 1 hour in milliseconds
             const expirationTime = new Date(Date.now() + oneHour); // Calculate the expiration time
 
-            res.cookie('user', token, { expires: expirationTime });
+            // res.cookie('user', token, { expires: expirationTime });
+            res.cookie('user', token, {
+                expires: expirationTime,
+                httpOnly: true,
+                secure: true // Set the Secure flag
+            }).send();
+
             if (token) {
                 return res.status(200).send({ message: "Success", token: token })
             }

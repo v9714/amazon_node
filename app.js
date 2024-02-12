@@ -16,8 +16,10 @@ app.use(express.json());
 Connectdb();
 app.use(cors({
     origin: process.env.origin,
-    credentials: process.env.credentials,
+    // credentials: process.env.credentials,
     // withCredentials: true,
+      credentials: true,
+    withCredentials: true,
 }));
 app.use(cookieParser());
 

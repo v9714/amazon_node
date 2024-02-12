@@ -19,7 +19,7 @@ app.use(cors({
     origin: "*",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: false,
+    credentials: true,
     exposedHeaders: ['Set-Cookie', 'Date', 'ETag']
 }));
 app.use(bodyParser.urlencoded({ extended: true }));

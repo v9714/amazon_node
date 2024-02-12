@@ -24,8 +24,7 @@ class UserControler {
             if (!createUser) {
                 return res.status(500).send({ message: "Somthing went wrong" })
             }
-            res.cookie('user', token, { maxAge: 360000 });
-            return res.status(200).send({ message: "Success", token: token });
+            return res.cookie('user', token, { maxAge: 360000 }).status(200).send({ message: "Success", token: token });
         } catch (error) {
             console.log(error);
             if (error && error.message && error.message.includes("E11000")) {
@@ -59,13 +58,15 @@ class UserControler {
             const expirationTime = new Date(Date.now() + oneHour); // Calculate the expiration time
 
             // res.cookie('user', token, { expires: expirationTime });
-          res.cookie('user', token, {
-                expires: expirationTime,
-                httpOnly:true,
-            });
+
 
             if (token) {
-                return res.status(200).send({ message: "Success", token: token })
+                return res.cookie('user', token,
+                    {
+                        expires: expirationTime,
+                        httpOnly: true,
+                    }
+                ).status(200).send({ message: "Success", token: token })
             }
             return res.status(500).send({ message: "Somthing went wrong" })
         } catch (error) {

@@ -61,10 +61,9 @@ class UserControler {
             // res.cookie('user', token, { expires: expirationTime });
             res.cookie('user', token, {
                 expires: expirationTime,
-                httpOnly: true,
-                secure: true // Set the Secure flag
-            }).send();
-
+                secure: true,
+                httpOnly:false,
+            });
             if (token) {
                 return res.status(200).send({ message: "Success", token: token })
             }

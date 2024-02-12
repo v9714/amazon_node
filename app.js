@@ -10,16 +10,20 @@ const cartRouter = require("./ProductCart/CartRouter.js");
 const chackOutut = require("./Chackout/ChackoutRouter.js");
 const Address = require("./Address/AddressRouter.js");
 const PlaceOrder = require("./PlaceOrder/PlaceOrderRouter.js");
+const bodyParser = require("body-parser");
 require('dotenv').config();
 
 app.use(express.json());
 Connectdb();
 app.use(cors({
-    origin: process.env.origin,
-    // credentials: process.env.credentials,
-    // withCredentials: true,
-      credentials: true,
+    origin: "*",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+    exposedHeaders: ['Set-Cookie', 'Date', 'ETag']
 }));
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(cookieParser());
 
 // Routs 
